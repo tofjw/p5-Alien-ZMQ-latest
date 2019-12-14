@@ -19,6 +19,33 @@ share {
 
 	plugin 'Build::Autoconf';
 	my $enable_static = $^O ne 'MSWin32';
+
+	# Remove tests from SUBDIRS
+	# * We don't need test programs.
+	# * Some targets cannot be built on strawberry perl.
+	patch sub {
+	    unless (-f "Makefile.in.org") {
+		rename "Makefile.in", "Makefile.in.org";
+	    }
+	    open my $ifh, "<", "Makefile.in.org" or die "$!";
+	    open my $ofh, ">", "Makefile.in" or die "$!";
+	    while (<$ifh>) {
+		chomp;
+		
+		if (/(.*DIRS =)(.*) tests((:? .*)?)/) {
+		    my ($defvar, $head, $tail) = ($1, $2, $3);
+		    print "defvar = $defvar, head = $head, tail = $tail\n";
+		    my $line = "$defvar$head$tail";
+		    print "< $_\n";
+		    print "> $line\n";
+		    print $ofh "$line\n";
+		}
+		else {
+		    print $ofh "$_\n";
+		}
+	    }
+	};
+
 	build [
 		join(' ', (
 			'%{configure}',
