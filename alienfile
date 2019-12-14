@@ -2,11 +2,17 @@ use alienfile;
 
 plugin 'PkgConfig' => 'libzmq';
 
+# You can control installed version of ZMQ by setting environment variable.
+# Linux: export ALIEN_ZMQ_VERSION=3.*
+# Win: set ALIEN_ZMQ_VERSION=3.*
+#
+my $zmq_version = $ENV{ALIEN_ZMQ_VERSION} || '([\d\.]+)';
+
 # http://zeromq.org/
 share {
 	plugin Download => (
-		url => 'https://github.com/zeromq/libzmq/releases',
-		version => qr/zeromq-([\d\.]+)\.tar\.gz/,
+		url => 'http://download.zeromq.org',
+		version => qr/zeromq-$zmq_version\.tar\.gz/
 	);
 
 	plugin Extract => 'tar.gz';
