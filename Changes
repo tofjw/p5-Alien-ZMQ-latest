@@ -1,3 +1,9 @@
+0.004_01 2017912-17 23:20:00+0900
+
+  Features
+
+   - Add Capability to set version of ZeroMQ via environment variable.
+
 0.004 2017-12-15 10:28:20-0600
 
   Features
