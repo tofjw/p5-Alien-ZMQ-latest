@@ -22,7 +22,6 @@ Following example can build latest ZeroMQ of version 3.x.
     > perl Makefile.PL
     > gmake
     > gmake install
-    
 
 =head1 SEE ALSO
 
@@ -30,9 +29,7 @@ L<ZeroMQ|http://zeromq.org/>
 
 =head1 AUTHOR
 
-Zakariyya Mughal <zmughal@cpan.org>
-
-(Capability to set version is added by T.Fujiwara)
+Zakariyya Mughal <zmughal@cpan.org>, (Capability to set version is added by toshifjw@cpan.org)
 
 =head1 COPYRIGHT AND LICENSE
 

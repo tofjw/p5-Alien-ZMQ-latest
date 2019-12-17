@@ -15,6 +15,17 @@ __END__
 
 Installs the latest release of ZeroMQ.
 
+You can use environment variable to specify ZeroMQ version to be installed.
+Following example can build latest ZeroMQ of version 3.x.
+(Windows and Strawberry perl is intented here)
+
+    > set ALIEN_ZMQ_wVERSION=3.*
+    > perl Makefile.PL
+    > gmake
+    > gmake install
+
+    
 =head1 SEE ALSO
 
 L<ZeroMQ|http://zeromq.org/>
+
